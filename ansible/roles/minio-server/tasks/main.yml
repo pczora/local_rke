@@ -1,0 +1,19 @@
+---
+- name: Install docker-py
+  include: python.yml
+- name: Run minio container
+  become: yes
+  become_user: k8s
+  docker_container: 
+    name: minio
+    image: minio/minio
+    env:
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: minio123
+    published_ports:
+      - "9000:9000"
+    volumes: 
+      - "/mnt/data:/data"
+      - "/mnt/config:/root/.minio"
+    command: server /data
+

@@ -1,0 +1,10 @@
+---
+- hosts: all
+  roles:
+    - nfs-server
+    - minio-server
+  tasks:
+    - name: Create k8s user
+      include: k8s_user.yml
+    - name: Install Docker
+      include: docker.yml

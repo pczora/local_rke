@@ -1,0 +1,11 @@
+---
+- name: Install python
+  become: yes
+  apt:
+    name: [python-pip]
+    state: present
+    update_cache: yes
+- name: Install docker-py
+  become: yes
+  become_user: k8s
+  shell: pip install docker-py

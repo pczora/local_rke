@@ -1,0 +1,1 @@
+/exports 192.168.100.0/24(rw,fsid=0,insecure,no_subtree_check,async,no_root_squash)

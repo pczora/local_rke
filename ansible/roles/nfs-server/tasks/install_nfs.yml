@@ -1,0 +1,23 @@
+---
+- name: Install NFS server
+  become: yes
+  apt:
+    name: ['nfs-kernel-server']
+    state: present
+    update_cache: yes
+- name: Set up exports directory
+  become: yes
+  file:
+    path: /exports
+    owner: root
+    group: root
+    mode: 0777
+    state: directory
+- name: Create NFS export
+  become: yes
+  copy:
+    src: files/exports
+    dest: /etc/exports
+- name: Update exports
+  become: yes
+  shell: exportfs -a
