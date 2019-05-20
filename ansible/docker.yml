@@ -14,3 +14,8 @@
     name: ['apt-transport-https','ca-certificates','curl','software-properties-common','docker-ce']
     state: present
     update_cache: yes
+
+- name: Add docker group
+  group:
+    name: docker
+    state: present
