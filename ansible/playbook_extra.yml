@@ -1,10 +1,10 @@
 ---
-- hosts: all
+- hosts: ~(.*)extra-(.*)
+  pre_tasks:
+    - name: Install Docker
+      include: docker.yml
+    - name: Create k8s user
+      include: k8s_user.yml
   roles:
     - nfs-server
     - minio-server
-  tasks:
-    - name: Create k8s user
-      include: k8s_user.yml
-    - name: Install Docker
-      include: docker.yml

@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: ~(.*)controller-(.*), ~(.*)worker-(.*)
   tasks:
     - name: Create k8s user
       include: k8s_user.yml
